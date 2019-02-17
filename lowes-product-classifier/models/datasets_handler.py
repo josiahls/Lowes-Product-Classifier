@@ -114,8 +114,8 @@ def get_real_data(image_shape: Tuple[float, float, float], data_dir: str = 'data
                                                                                         set_distribution['validation']))
 
     datagen = tf.keras.preprocessing.image.ImageDataGenerator(
-        featurewise_center=True,
-        featurewise_std_normalization=True,
+        # featurewise_center=True,
+        # featurewise_std_normalization=True,
         rotation_range=0,
         channel_shift_range=0.0,
         width_shift_range=0.0,
