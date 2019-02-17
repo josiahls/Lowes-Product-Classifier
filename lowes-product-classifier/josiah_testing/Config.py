@@ -8,4 +8,5 @@ class Config(object):
                       'GE_Basic_LED_90W_Daylight',
                       'GE_Classic_LED_65W_Soft_White',
                       'GE_Vintage_LED_60W_Warm_Light',
-                      'OSI_60W_13W_CFL_SOFT_WHITE_6_CT']
+                      'OSI_60W_13W_CFL_SOFT_WHITE_6_CT',
+                      'Theres_No_Bulb']
