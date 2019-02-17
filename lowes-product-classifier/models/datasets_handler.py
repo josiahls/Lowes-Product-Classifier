@@ -115,8 +115,11 @@ def get_real_data(image_shape: Tuple[float, float, float], data_dir: str = 'data
     x_train = [x for x in X if x not in test_df['filenames']]
     Y = [Y[X == x][0] for x in X if x not in test_df['filenames']]
     X = x_train
-    x_train, x_validation, y_train, y_validation = train_test_split(X, Y, test_size=int(len(X) *
-                                                                                        set_distribution['validation']))
+
+    print(X)
+    x_train, x_validation, y_train, y_validation = train_test_split(X, Y, test_size=int(len(X) * set_distribution['validation']))
+    print(x_train)
+    print(x_validation)
 
     datagen = tf.keras.preprocessing.image.ImageDataGenerator(
         # featurewise_center=True,
