@@ -55,6 +55,9 @@ def load_images(n_classes, data_dir, target_dict):
     for directory in Config.DATA_DIR_NAMES:
         # For each image in that class
         for filename in os.listdir(data_dir + directory):
+            if str(filename).__contains__('._'):
+                continue
+
             # Get a standard sized image
             im = np.array(Image.open(data_dir + directory + os.sep + filename)
                           .resize(STANDARD_IMAGE_SIZE[0:2], Image.ANTIALIAS))
