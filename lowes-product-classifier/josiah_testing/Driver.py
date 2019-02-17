@@ -140,7 +140,7 @@ def train(hyper_params, reset_dataset=False):
     # The model documentation notes that this is the size of the classification block
     x = GlobalAveragePooling2D()(model.output)
     # let's add a fully-connected layer
-    x = Dense(1024, activation='relu')(x)
+    x = Dense(16, activation='relu')(x)
     # and a logistic layer -- let's say we have 200 classes
     x = Dense(hyper_params['n_classes'], activation='softmax', name='predictions')(x)
 
