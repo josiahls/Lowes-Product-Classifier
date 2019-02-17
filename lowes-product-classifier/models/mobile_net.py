@@ -19,7 +19,7 @@ import datasets_handler
 from tensorflow.python.keras.applications import InceptionResNetV2, MobileNet
 from tensorflow.python.keras.applications import NASNetMobile
 from tensorflow.python.keras.applications import VGG19
-from tensorflow.python.keras.layers import GlobalAveragePooling2D, Dense
+from tensorflow.python.keras.layers import GlobalAveragePooling2D, Dense, Dropout
 import os
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
@@ -43,7 +43,8 @@ class MobileNetModel:
         # The model documentation notes that this is the size of the classification block
         x = GlobalAveragePooling2D()(self.model.output)
         # let's add a fully-connected layer
-        x = Dense(16, activation='relu')(x)
+        x = Dense(1024, activation='relu')(x)
+        x = Dropout(x, rate=0.5)
         # and a logistic layer -- let's say we have 200 classes
         x = Dense(int(data_y.shape[1]), activation='softmax', name='predictions')(x)
         # create graph of your new model
