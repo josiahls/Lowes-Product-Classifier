@@ -93,7 +93,9 @@ def get_real_data(image_shape: Tuple[float, float, float], data_dir: str = 'data
         image_dir = os.path.join(absolute_path, dir)
         print(dir)
         for image in tf.gfile.ListDirectory(image_dir):
-            print(image)
+            if str(image).__contains__('._'):
+                continue
+
             if X is None:
                 X = np.array([str(image).lower()])
                 Y = np.array([dir])
