@@ -62,7 +62,7 @@ class MobileNetModel:
 if __name__ == '__main__':
     tf.enable_eager_execution()
     train_generator, validation_generator = datasets_handler.get_real_data((224, 224, 3))
-    print(train_generator.filenames)
+    print([f for f in train_generator.filenames if str(f).__contains__('._')])
     x, y = train_generator.next()
 
     # Setup the model
