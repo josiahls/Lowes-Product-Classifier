@@ -140,18 +140,14 @@ def get_real_data(image_shape: Tuple[float, float, float], data_dir: str = 'data
     #     # vertical_flip=False,
     #     validation_split=set_distribution['validation'],
     #     zoom_range=0)
+    train_iter = datagen.flow_from_directory(absolute_path, subset='training')
+    validation_iter = datagen.flow_from_directory(absolute_path, subset='validation')
 
-    def train_validation_generator():
-        return datagen.flow_from_directory(absolute_path)
-
-    # def test_generator():
-    #     return test_datagen.flow_from_directory(absolute_path)
-
-    # test_dataset = tf.data.Dataset.from_generator(test_generator, output_types=(tf.float64, tf.float64))
+    train_iter.filenames = [f for f in train_iter.filenames if not str(f).__contains__('._')]
+    validation_iter.filenames = [f for f in validation_iter.filenames if not str(f).__contains__('._')]
 
     # Save the test dataset for persistent comparisons between runs
-    return datagen.flow_from_directory(absolute_path, subset='training'), \
-           datagen.flow_from_directory(absolute_path, subset='validation')   #, test_datagen
+    return train_iter, validation_iter
 
 
 if __name__ == '__main__':
