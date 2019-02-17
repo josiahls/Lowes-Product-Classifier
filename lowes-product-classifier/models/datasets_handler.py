@@ -143,9 +143,6 @@ def get_real_data(image_shape: Tuple[float, float, float], data_dir: str = 'data
     train_iter = datagen.flow_from_directory(absolute_path, subset='training')
     validation_iter = datagen.flow_from_directory(absolute_path, subset='validation')
 
-    train_iter.filenames = [f for f in train_iter.filenames if not str(f).__contains__('._')]
-    validation_iter.filenames = [f for f in validation_iter.filenames if not str(f).__contains__('._')]
-
     # Save the test dataset for persistent comparisons between runs
     return train_iter, validation_iter
 
