@@ -49,18 +49,18 @@ class MobileNetModel:
         self.model.compile(optimizer=tf.train.AdamOptimizer(), loss='categorical_crossentropy',
                            metrics=['accuracy', 'mean_squared_error'])
 
-    def train(self, train_validation_generator):
+    def train(self, train_generator, validation_generator):
         print('Training Model')
         # fits the model on batches with real-time data augmentation:
-        self.model.fit_generator(train_validation_generator, steps_per_epoch=1, epochs=20, validation_steps=1,
-                                 validation_data=train_validation_generator, verbose=1)
+        self.model.fit_generator(train_generator, steps_per_epoch=1, epochs=20, validation_steps=1,
+                                 validation_data=validation_generator, verbose=1)
 
 
 if __name__ == '__main__':
     tf.enable_eager_execution()
-    train_validation_generator = datasets_handler.get_real_data((224, 224, 3))
-    x, y = train_validation_generator.next()
+    train_generator, validation_generator = datasets_handler.get_real_data((224, 224, 3))
+    x, y = train_generator.next()
 
     # Setup the model
     model = MobileNetModel(x, y)
-    model.train(train_validation_generator)
+    model.train(train_generator, validation_generator)
