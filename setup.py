@@ -32,4 +32,4 @@ setuptools.setup(name='lowes_product_classifier',
                  author_email='jlaivins@uncc.edu',
                  license='',
                  packages=setuptools.find_packages(),
-                 install_requires=['numpy', 'sklearn', 'tensorflow', 'tensor_probability', 'pillow'])
+                 install_requires=['numpy', 'sklearn', 'tensor_probability', 'pillow'])

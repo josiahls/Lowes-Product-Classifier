@@ -10,3 +10,5 @@ Lowes Product Classifier
 __version__ = '0.0.1'
 __author__ = ''
 
+import models
+import utils
