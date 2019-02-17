@@ -5,7 +5,7 @@
 #
 #PBS -N "classifier_jlaivins"
 #PBS -q copperhead
-#PBS -l walltime=400:00:00
+#PBS -l walltime=1:00:00
 #PBS -l nodes=1:ppn=1:gpus=1,mem=16GB
 #PBS -V
 #
