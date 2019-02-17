@@ -87,12 +87,14 @@ def get_real_data(image_shape: Tuple[float, float, float], data_dir: str = 'data
     except FileNotFoundError:
         test_df = None
 
+    print(absolute_path)
     # Load images and their labels
     for dir in [_ for _ in tf.gfile.ListDirectory(absolute_path) if _ in FLAGS.categories]:
         image_dir = os.path.join(absolute_path, dir)
         print(dir)
         for image in tf.gfile.ListDirectory(image_dir):
             if X is None:
+                print(image)
                 X = np.array([str(image).lower()])
                 Y = np.array([dir])
             else:

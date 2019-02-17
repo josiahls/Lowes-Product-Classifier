@@ -20,6 +20,9 @@ from tensorflow.python.keras.applications import InceptionResNetV2, MobileNet
 from tensorflow.python.keras.applications import NASNetMobile
 from tensorflow.python.keras.applications import VGG19
 from tensorflow.python.keras.layers import GlobalAveragePooling2D, Dense
+import os
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
 class MobileNetModel:
