@@ -96,7 +96,7 @@ def train(hyper_params, reset_dataset=False):
     if hyper_params['sanity_test']:
         X_train, X_test, y_train, y_test = (X, X, Y, Y)
     else:
-        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33)
+        X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.10)
 
     print("Done building data set")
     model = None
