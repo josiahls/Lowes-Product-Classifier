@@ -1,4 +1,3 @@
-#!/usr/bin/env python3.6
 from time import time
 
 from PIL import Image
@@ -165,6 +164,7 @@ def train(hyper_params, reset_dataset=False):
         datagen = tf.keras.preprocessing.image.ImageDataGenerator(
             featurewise_center=True,
             featurewise_std_normalization=True,
+            channel_shift_range=0.5,
             rotation_range=180,
             width_shift_range=0.1,
             height_shift_range=0.1,
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     # hyper_params.append({'epochs': epochs, 'name': 'InceptionResNetV2', 'n_classes': classes, 'use_weights': True,
     #                          'sanity_test': False, 'opt': 'sgd', 'use_aug': True})
     hyper_params.append({'epochs': epochs, 'name': 'NASNetMobile', 'n_classes': classes, 'use_weights': True,
-                             'sanity_test': False, 'opt': 'sgd', 'use_aug': True})
+                             'sanity_test': False, 'opt': 'adam', 'use_aug': True})
     # hyper_params.append({'epochs': epochs, 'name': 'VGG19', 'n_classes': classes, 'use_weights': True,
     #                          'sanity_test': False, 'opt': 'sgd', 'use_aug': False})
     # hyper_params.append({'epochs': epochs, 'name': 'InceptionResNetV2', 'n_classes': classes, 'use_weights': True,
