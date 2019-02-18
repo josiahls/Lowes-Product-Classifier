@@ -9,6 +9,9 @@ from tensorflow.python.keras.applications import MobileNet
 
 from Config import Config
 from util import *
+import os
+
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 
 class MobileNetModelWrapper:
